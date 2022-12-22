@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NewDashboardController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
@@ -89,6 +90,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/new-dashboard', [NewDashboardController::class, 'index'])->name('dashboard');
 
     //Api
     Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug']);
@@ -103,14 +105,14 @@ Route::middleware(['auth'])->group(function () {
         'destroy' => 'dashboard.posts.destroy',
     ]);
 
-    Route::resource('/dashboard/categories', AdminCategoryController::class)->names([
-        'index' => 'dashboard.categories.index',
-        'create' => 'dashboard.categories.create',
-        'store' => 'dashboard.categories.store',
-        'edit' => 'dashboard.categories.edit',
-        'update' => 'dashboard.categories.update',
-        'destroy' => 'dashboard.categories.destroy',
-    ]);
+    // Route::resource('/dashboard/categories', AdminCategoryController::class)->names([
+    //     'index' => 'dashboard.categories.index',
+    //     'create' => 'dashboard.categories.create',
+    //     'store' => 'dashboard.categories.store',
+    //     'edit' => 'dashboard.categories.edit',
+    //     'update' => 'dashboard.categories.update',
+    //     'destroy' => 'dashboard.categories.destroy',
+    // ]);
 
     // Middleware Pengecekan ADMIN
     Route::middleware(['is-admin'])->group(function () {

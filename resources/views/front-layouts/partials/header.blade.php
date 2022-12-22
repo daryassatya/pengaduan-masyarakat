@@ -35,7 +35,7 @@
                         <li><a href="#">Dropdown 4</a></li>
                     </ul>
                 </li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="{{ route('login') }}">Contact</a></li>
             </ul>
         </nav><!-- .navbar -->
 

@@ -57,7 +57,6 @@ class AuthController extends Controller
 
         return back()->with('loginError', 'Login Failed!');
 
-        dd('berhasil login');
     }
 
     public function logout(Request $request)

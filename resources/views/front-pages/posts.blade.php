@@ -18,8 +18,27 @@
     <section id="blog" class="blog">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="row gy-4 posts-list">
+            <div class="row justify-content-center mb-3">
+                <div class="col-md-5">
+                    <form action="{{ route('post') }}">
+                        @if (request('category'))
+                            <input type="hidden" name="category" value="{{ request('category') }}">
+                        @endif
+                        @if (request('author'))
+                            <input type="hidden" name="author" value="{{ request('author') }}">
+                        @endif
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search" name="search"
+                                value="{{ request('search') }}">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-dark" type="submit">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
+            <div class="row gy-4 posts-list">
                 @foreach ($posts as $post)
                     <div class="col-xl-4 col-md-6">
                         <div class="post-item position-relative h-100">
