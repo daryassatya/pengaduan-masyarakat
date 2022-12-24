@@ -90,7 +90,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/new-dashboard', [NewDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/new-dashboard', [NewDashboardController::class, 'index'])->name('new-dashboard');
 
     //Api
     Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug']);

@@ -11,10 +11,8 @@
         <a href="javascript:void(0)" class="logo justify-content-around">
             <!-- logo-->
             <div class="logo-lg">
-                <span class="light-logo"><img src="{{ asset('images/logo2.png') }}"
-                        alt="logo"></span>
-                <span class="dark-logo"><img src="{{ asset('images/logo2.png') }}"
-                        alt="logo"></span>
+                <span class="light-logo"><img src="{{ asset('images/logo2.png') }}" alt="logo"></span>
+                <span class="dark-logo"><img src="{{ asset('images/logo2.png') }}" alt="logo"></span>
             </div>
         </a>
     </div>
@@ -27,9 +25,11 @@
                 <ul class="header-megamenu nav">
                     <li class="btn-group nav-item d-md-none">
                         <a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu"
-                            role="button"></a>
+                            role="button">
+                            <span class="icon-Align-left"><span class="path1"></span><span class="path2"></span><span
+                                    class="path3"></span></span>
+                        </a>
                     </li>
-
                     <li class="btn-group nav-item d-none d-md-inline-block">
                         <a href="#" data-provide="fullscreen"
                             class="waves-effect waves-light nav-link full-screen" title="Full Screen">
@@ -69,8 +69,8 @@
 
                         <ul class="dropdown-menu animated flipInX">
                             <li class="user-body">
-                                <a class="dropdown-item" href="#"><i
-                                        class="ti-user text-muted me-2"></i> Profile</a>
+                                <a class="dropdown-item" href="#"><i class="ti-user text-muted me-2"></i>
+                                    Profile</a>
                                 {{-- <a class="dropdown-item" href="#"><i class="ti-settings text-muted me-2"></i> Settings</a> --}}
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" onclick="logout()"><i
