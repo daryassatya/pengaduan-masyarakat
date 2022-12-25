@@ -50,17 +50,17 @@
             <!-- sidebar menu-->
             <ul class="sidebar-menu" data-widget="tree">
 
-                <li class="header">Menu </li>
+                <li class="header">Menu</li>
 
                 {{-- Dashboard --}}
-                <li class="{{ request()->segment(1) == 'dashboard' ? 'active' : '' }}">
-                    <a href="{{ route('dashboard') }}">
+                <li class="{{ request()->segment(1) == 'new-dashboard' ? 'active' : '' }}">
+                    <a href="{{ route('new-dashboard') }}">
                         <i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="{{ request()->segment(1) == 'mainmenu' ? 'active' : '' }}">
-                    <a href="#">
+                <li class="{{ request()->segment(1) == 'main-menu' ? 'active' : '' }}">
+                    <a href="{{ route('mainmenu') }}">
                         <i class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
                         <span>Main Menu</span>
                     </a>

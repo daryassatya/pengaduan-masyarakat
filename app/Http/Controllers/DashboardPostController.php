@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -20,7 +21,7 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index', [
+        return view('new-dashboard.posts.index', [
             'title' => 'Post',
             'posts' => Post::where('user_id', auth()->user()->id)->get(),
         ]);
@@ -159,9 +160,17 @@ class DashboardPostController extends Controller
             }
 
             Post::destroy($post->id);
-            return redirect()->route('dashboard.posts.index')->with(['success' => 'Post has been deleted!']);
+            return response()->json([
+                'success' => true,
+                'message' => 'Posts successfully deleted',
+            ], 200);
         } catch (\Throwable$th) {
-            return redirect()->back()->with(['failed' => $th->getMessage()]);
+            Session::flash('failed', $th->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => $th->getMessage(),
+            ], 200);
         }
     }
 

@@ -3,8 +3,8 @@
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\NewDashboardController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\NewDashboardController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\User;
@@ -91,6 +91,7 @@ Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/new-dashboard', [NewDashboardController::class, 'index'])->name('new-dashboard');
+    Route::get('/main-menu', [NewDashboardController::class, 'mainMenu'])->name('mainmenu');
 
     //Api
     Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug']);

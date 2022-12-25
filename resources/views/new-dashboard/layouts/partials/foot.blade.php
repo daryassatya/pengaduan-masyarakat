@@ -30,7 +30,7 @@
 {{-- fontawesome --}}
 <script defer src="{{ asset('js/vendor/fontawesome/all.min.js') }}"></script>
 
-{{-- <script>
+<script>
     // Logout function
     function logout() {
         $.confirm({
@@ -125,9 +125,13 @@
         });
     }
 
+    function test(title, name, url) {
+        console.log(title, name, url)
+    }
+
 
     // SELECT 2 SEARCH
 
     $(".form-select").select2({});
-</script> --}}
+</script>
 @stack('scripts')
