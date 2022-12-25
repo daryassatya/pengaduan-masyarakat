@@ -35,7 +35,7 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create', [
+        return view('new-dashboard.posts.create', [
             'title' => 'Create New Post',
             'categories' => Category::all(),
         ]);
@@ -66,6 +66,7 @@ class DashboardPostController extends Controller
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 150, '...'); //strip_tags untuk menghilangkan tag html
 
         try {
+
             Post::create($validatedData);
             return redirect()->route('dashboard.posts.index')->with(['success' => 'New post has been added!']);
         } catch (\Throwable$th) {
@@ -97,7 +98,7 @@ class DashboardPostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('dashboard.posts.edit', [
+        return view('new-dashboard.posts.edit', [
             'title' => 'Edit Post',
             'post' => $post,
             'categories' => Category::all(),
@@ -160,6 +161,8 @@ class DashboardPostController extends Controller
             }
 
             Post::destroy($post->id);
+
+            Session::flash('success', 'Post Successfully Deleted!');
             return response()->json([
                 'success' => true,
                 'message' => 'Posts successfully deleted',

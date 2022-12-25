@@ -129,6 +129,15 @@
         console.log(title, name, url)
     }
 
+    const image = document.querySelector('#image');
+    const imgPreview = document.querySelector('.img-preview');
+    imgPreview.style.display = 'block';
+    image.addEventListener('change', function(e) {
+
+        const blob = URL.createObjectURL(e.target.files[0]);
+        imgPreview.src = blob;
+        console.log(blob);
+    });
 
     // SELECT 2 SEARCH
 

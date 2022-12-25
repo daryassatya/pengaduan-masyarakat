@@ -24,7 +24,21 @@
                             <img src="{{ asset('images/svg/post.svg') }}" style="height: 26px" alt="">
                         </div>
                         <div class="d-flex flex-column fw-500">
-                            <span class="text-dark fs-14">New Post</span>
+                            <span class="text-dark fs-14">Posts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('dashboard.categories.index') }}'">
+            <div class="box card">
+                <div class="box-body p-10">
+                    <div class="d-flex align-items-center">
+                        <div class="me-15 bg-dark h-50 w-50 l-h-50 rounded text-center">
+                            <img src="{{ asset('images/svg/categories.svg') }}" style="height: 26px" alt="">
+                        </div>
+                        <div class="d-flex flex-column fw-500">
+                            <span class="text-dark fs-14">Categories</span>
                         </div>
                     </div>
                 </div>

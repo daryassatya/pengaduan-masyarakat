@@ -94,7 +94,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/main-menu', [NewDashboardController::class, 'mainMenu'])->name('mainmenu');
 
     //Api
-    Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug']);
+    Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug'])->name('check-slug');
 
     Route::resource('/dashboard/posts', DashboardPostController::class)->names([
         'index' => 'dashboard.posts.index',

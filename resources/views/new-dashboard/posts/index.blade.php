@@ -19,7 +19,7 @@
 
                             {{-- @if (auth()->user()->can('company-create')) --}}
                             <div class="text-end">
-                                <a href="route('dashboard.posts.create')" class="btn btn-primary btn-rounded"><i
+                                <a href="{{ route('dashboard.posts.create') }}" class="btn btn-primary btn-rounded"><i
                                         class="fa fa-plus"></i> Add New</a>
                             </div>
                             {{-- @endif --}}
