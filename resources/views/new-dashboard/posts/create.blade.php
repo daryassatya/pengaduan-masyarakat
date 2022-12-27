@@ -2,7 +2,7 @@
 
 @section('breadcumb')
     <li class="breadcrumb-item"><a href="{{ route('new-dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('mainmenu') }}">Company List</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('mainmenu') }}">Main Menu</a></li>
     <li class="breadcrumb-item active" aria-current="page">Create</li>
 @endsection
 

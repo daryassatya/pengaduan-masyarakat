@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardPostCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\NewDashboardController;
 use App\Http\Controllers\PostController;
@@ -117,15 +117,30 @@ Route::middleware(['auth'])->group(function () {
 
     // Middleware Pengecekan ADMIN
     Route::middleware(['is-admin'])->group(function () {
-        Route::resource('/dashboard/categories', AdminCategoryController::class)->names([
-            'index' => 'dashboard.categories.index',
-            'create' => 'dashboard.categories.create',
-            'store' => 'dashboard.categories.store',
-            'edit' => 'dashboard.categories.edit',
-            'update' => 'dashboard.categories.update',
-            'destroy' => 'dashboard.categories.destroy',
-        ]);
+        // Route::resource('/dashboard/categories', AdminCategoryController::class)->names([
+        //     'index' => 'dashboard.categories.index',
+        //     'create' => 'dashboard.categories.create',
+        //     'store' => 'dashboard.categories.store',
+        //     'edit' => 'dashboard.categories.edit',
+        //     'update' => 'dashboard.categories.update',
+        //     'destroy' => 'dashboard.categories.destroy',
+        // ]);
 
+        Route::prefix('new-dashboard.categories')->name('new-dashboard.categories.')->group(function () {
+            Route::get('/', function () {
+                $data['title'] = 'Categories';
+                return view('new-dashboard.categories.index', $data);
+            })->name('index');
+
+            Route::resource('post-categories', DashboardPostCategoryController::class)->names([
+                'index' => 'post-categories.index',
+                'create' => 'post-categories.create',
+                'store' => 'post-categories.store',
+                'edit' => 'post-categories.edit',
+                'update' => 'post-categories.update',
+                'destroy' => 'post-categories.destroy',
+            ]);
+        });
     });
 });
 

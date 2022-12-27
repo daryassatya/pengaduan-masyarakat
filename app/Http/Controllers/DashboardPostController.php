@@ -66,7 +66,6 @@ class DashboardPostController extends Controller
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 150, '...'); //strip_tags untuk menghilangkan tag html
 
         try {
-
             Post::create($validatedData);
             return redirect()->route('dashboard.posts.index')->with(['success' => 'New post has been added!']);
         } catch (\Throwable$th) {

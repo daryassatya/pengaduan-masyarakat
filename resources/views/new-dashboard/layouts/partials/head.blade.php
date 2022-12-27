@@ -4,12 +4,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>{{ env('APP_NAME') . ' - ' . ($page_title ?? '') }} </title>
+<title>{{ env('APP_NAME') . ' - ' . ($title ?? '') }} </title>
 
 <!-- Vendors Style-->
 <link rel="stylesheet" href="{{ asset('css/vendors_css.css') }}">
-<link rel="stylesheet"
-    href="{{ asset('assets/vendor_plugins/jquery-confirm/jquery-confirm.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor_plugins/jquery-confirm/jquery-confirm.min.css') }}">
 
 <!-- Style-->
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
