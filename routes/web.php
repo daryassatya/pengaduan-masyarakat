@@ -90,8 +90,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/new-dashboard', [NewDashboardController::class, 'index'])->name('new-dashboard');
-    Route::get('/main-menu', [NewDashboardController::class, 'mainMenu'])->name('mainmenu');
+    Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('mainmenu');
 
     //Api
     Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug'])->name('check-slug');
@@ -106,30 +105,13 @@ Route::middleware(['auth'])->group(function () {
         'destroy' => 'dashboard.posts.destroy',
     ]);
 
-    // Route::resource('/dashboard/categories', AdminCategoryController::class)->names([
-    //     'index' => 'dashboard.categories.index',
-    //     'create' => 'dashboard.categories.create',
-    //     'store' => 'dashboard.categories.store',
-    //     'edit' => 'dashboard.categories.edit',
-    //     'update' => 'dashboard.categories.update',
-    //     'destroy' => 'dashboard.categories.destroy',
-    // ]);
-
     // Middleware Pengecekan ADMIN
     Route::middleware(['is-admin'])->group(function () {
-        // Route::resource('/dashboard/categories', AdminCategoryController::class)->names([
-        //     'index' => 'dashboard.categories.index',
-        //     'create' => 'dashboard.categories.create',
-        //     'store' => 'dashboard.categories.store',
-        //     'edit' => 'dashboard.categories.edit',
-        //     'update' => 'dashboard.categories.update',
-        //     'destroy' => 'dashboard.categories.destroy',
-        // ]);
 
-        Route::prefix('new-dashboard.categories')->name('new-dashboard.categories.')->group(function () {
+        Route::prefix('dashboard.categories')->name('dashboard.categories.')->group(function () {
             Route::get('/', function () {
                 $data['title'] = 'Categories';
-                return view('new-dashboard.categories.index', $data);
+                return view('dashboard.categories.index', $data);
             })->name('index');
 
             Route::resource('post-categories', DashboardPostCategoryController::class)->names([

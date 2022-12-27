@@ -1,7 +1,7 @@
-@extends('new-dashboard.layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('breadcumb')
-    <li class="breadcrumb-item"><a href="{{ route('new-dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
     <li class="breadcrumb-item active" aria-current="page">Posts List</li>
 @endsection
 
@@ -13,14 +13,14 @@
                     <div class="col-12">
                         <div class="d-flex flex-row justify-content-between">
                             <h4 class="box-title align-items-start flex-column">
-                                Post List
-                                <small class="subtitle">A list of Posts</small>
+                                Post categories
+                                <small class="subtitle">List of posts</small>
                             </h4>
 
                             {{-- @if (auth()->user()->can('company-create')) --}}
                             <div class="text-end">
-                                <a href="{{ route('dashboard.posts.create') }}" class="btn btn-primary btn-rounded"><i
-                                        class="fa fa-plus"></i> Add New</a>
+                                <a href="{{ route('dashboard.categories.post-categories.create') }}"
+                                    class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                             {{-- @endif --}}
                         </div>
@@ -37,14 +37,14 @@
                             <thead>
                                 <tr class="text-uppercase bg-lightest">
                                     <th style="max-width: 19px"><span class="text-dark">No</span></th>
-                                    <th style="min-width: 100px"><span class="text-dark">Title</span></th>
-                                    <th style="min-width: 100px"><span class="text-dark">Category</span></th>
+                                    <th style="min-width: 100px"><span class="text-dark">Name</span></th>
+                                    <th style="min-width: 100px"><span class="text-dark">Slug</span></th>
                                     <th style="min-width: 100px" class="text-center"><span class="text-dark">Action</span>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($posts as $post)
+                                @foreach ($categories as $category)
                                     <tr>
                                         <td class="text-center">
                                             <span class="text-dark">
@@ -54,22 +54,18 @@
 
                                         <td class="text-start">
                                             <span class="text-dark">
-                                                {{ $post->title }}
+                                                {{ $category->name }}
                                             </span>
                                         </td>
 
                                         <td class="text-start">
                                             <span class="text-fade">
-                                                {{ $post->category->name }}
+                                                {{ $category->slug }}
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{ route('dashboard.posts.show', $post->slug) }}"
-                                                class="waves-effect waves-light btn btn-sm btn-info-light btn-circle"><i
-                                                    class="mdi mdi-eye"></i></a>
-
                                             {{-- @if (auth()->user()->can('company-edit')) --}}
-                                            <a href="{{ route('dashboard.posts.edit', $post->slug) }}"
+                                            <a href="{{ route('dashboard.categories.post-categories.edit', $category->slug) }}"
                                                 class="waves-effect waves-light btn btn-sm btn-warning-light btn-circle mx-5"><span
                                                     class="icon-Write"><span class="path1"></span><span
                                                         class="path2"></span></span></a>
@@ -79,12 +75,12 @@
 
                                             <a href="#"
                                                 class="waves-effect waves-light btn btn-sm btn-danger-light btn-circle"
-                                                onclick="modalDelete('Posts', 'Nama Post : {{ $post->title }}', '{{ route('dashboard.posts.destroy', $post->slug) }}', '{{ route('dashboard.posts.index') }}')"><span
+                                                onclick="modalDelete('Categories', 'Nama Category : {{ $category->slug }}', '{{ route('dashboard.categories.post-categories.destroy', $category->slug) }}', '{{ route('dashboard.categories.post-categories.index') }}')"><span
                                                     class="icon-Trash1 fs-18"><span class="path1"></span><span
                                                         class="path2"></span></span></a>
                                             {{-- <a href="#"
                                                 class="waves-effect waves-light btn btn-sm btn-danger-light btn-circle"
-                                                onclick="test(`Post`, `{{ $post->title }}`, `/dashboard/posts/`+'h')"><span
+                                                onclick="test(`Post`, `{{ category->title }}`, `/dashboard/posts/`+'h')"><span
                                                     class="icon-Trash1 fs-18"><span class="path1"></span><span
                                                         class="path2"></span></span></a> --}}
                                             {{-- @endif --}}

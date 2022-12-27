@@ -14,7 +14,7 @@ class DashboardPostCategoryController extends Controller
      */
     public function index()
     {
-        return view('new-dashboard.categories.post-category.index', [
+        return view('dashboard.categories.post-category.index', [
             'title' => 'Post Categories',
             'categories' => Category::all(),
         ]);
@@ -27,7 +27,7 @@ class DashboardPostCategoryController extends Controller
      */
     public function create()
     {
-        return view('new-dashboard.categories.post-category.create', [
+        return view('dashboard.categories.post-category.create', [
             'title' => 'Create Post Category',
         ]);
     }
@@ -47,7 +47,7 @@ class DashboardPostCategoryController extends Controller
 
         try {
             Category::create($validation);
-            return redirect()->route('new-dashboard.categories.post-categories.index')->with(['success' => 'New post has been added!']);
+            return redirect()->route('dashboard.categories.post-categories.index')->with(['success' => 'New post has been added!']);
         } catch (\Throwable$th) {
             return redirect()->back()->with(['failed' => $th->getMessage()]);
         }
@@ -73,9 +73,9 @@ class DashboardPostCategoryController extends Controller
      */
     public function edit(Category $post_category)
     {
-        return view('new-dashboard.categories.post-category.edit', [
+        return view('dashboard.categories.post-category.edit', [
             'title' => 'Edit Post Category',
-            'category' => $post_category
+            'category' => $post_category,
         ]);
 
     }
@@ -87,9 +87,20 @@ class DashboardPostCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $post_category)
     {
-        //
+        $validation = $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:categories',
+        ]);
+
+        try {
+            Category::findOrFail($post_category->id)->update($validation);
+            return redirect()->route('dashboard.categories.post-categories.index')->with(['success' => 'New post has been added!']);
+        } catch (\Throwable$th) {
+            return redirect()->back()->with(['failed' => $th->getMessage()]);
+        }
+
     }
 
     /**

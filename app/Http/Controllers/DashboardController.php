@@ -10,4 +10,10 @@ class DashboardController extends Controller
             'title' => 'Dashboard',
         ]);
     }
+    public function mainMenu()
+    {
+        return view('dashboard.main-menu', [
+            'title' => 'Main Menu',
+        ]);
+    }
 }

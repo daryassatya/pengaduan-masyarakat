@@ -53,8 +53,8 @@
                 <li class="header">Menu</li>
 
                 {{-- Dashboard --}}
-                <li class="{{ request()->segment(1) == 'new-dashboard' ? 'active' : '' }}">
-                    <a href="{{ route('new-dashboard') }}">
+                <li class="{{ request()->segment(1) == 'dashboard' ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}">
                         <i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
                         <span>Dashboard</span>
                     </a>

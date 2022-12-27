@@ -1,7 +1,7 @@
-@extends('new-dashboard.layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('breadcumb')
-    <li class="breadcrumb-item"><a href="{{ route('new-dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
     <li class="breadcrumb-item" aria-current="page"><a href="{{ route('mainmenu') }}">Main Menu</a></li>
     <li class="breadcrumb-item active" aria-current="page">Edit</li>
 @endsection
@@ -16,9 +16,9 @@
                 <h4 class="box-title">Edit Post Category</h4>
             </div>
 
-            <form class="form" action="{{ route('new-dashboard.categories.post-categories.update', $category->slug) }}"
+            <form class="form" action="{{ route('dashboard.categories.post-categories.update', $category->slug) }}"
                 method="POST" enctype="multipart/form-data">
-                @csrf
+                @csrf @method('patch')
 
                 <div class="box-body">
                     <div class="row">
@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="box-footer">
-                                <a href="{{ route('new-dashboard.categories.post-categories.index') }}"
+                                <a href="{{ route('dashboard.categories.post-categories.index') }}"
                                     class="btn btn-dark me-1">
                                     <i class="ti-back-right"></i> Back
                                 </a>
@@ -68,7 +68,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $("#name").on('change', function() {
+            $("#name").on('keyup', function() {
                 $.ajax({
                     type: "GET",
                     url: "{{ route('check-slug') }}",

@@ -1,4 +1,4 @@
-@extends('new-dashboard.layouts.app')
+@extends('dashboard.layouts.app')
 
 @push('styles')
     <style>
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('new-dashboard.categories.index') }}'">
+        <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('dashboard.categories.index') }}'">
             <div class="box card">
                 <div class="box-body p-10">
                     <div class="d-flex align-items-center">

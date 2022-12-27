@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('new-dashboard.layouts.partials.head')
+    @include('dashboard.layouts.partials.head')
     {{-- <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"> --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor_components/sweetalert/sweetalert.css') }}">
 </head>
@@ -13,12 +13,12 @@
         <div id="loader"></div>
 
         {{-- Header --}}
-        @include('new-dashboard.layouts.partials.header')
+        @include('dashboard.layouts.partials.header')
 
         <!-- Left side column. cmontains the logo and sidebar -->
         <aside class="main-sidebar">
             <!-- sidebar-->
-            @include('new-dashboard.layouts.partials.sidebar')
+            @include('dashboard.layouts.partials.sidebar')
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
@@ -51,7 +51,7 @@
         </div>
         <!-- /.content-wrapper -->
 
-        @include('new-dashboard.layouts.partials.footer')
+        @include('dashboard.layouts.partials.footer')
 
 
     </div>
@@ -188,7 +188,7 @@
     <!-- Page Content overlay -->
 
 
-    @include('new-dashboard.layouts.partials.foot')
+    @include('dashboard.layouts.partials.foot')
     {{-- <script src="{{ asset('assets/vendor_components/datatable/datatables.min.js') }}"></script> --}}
     <script src="{{ asset('assets/vendor_components/sweetalert/sweetalert.min.js') }}"></script>
 </body>

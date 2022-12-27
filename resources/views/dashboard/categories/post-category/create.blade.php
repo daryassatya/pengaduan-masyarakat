@@ -1,7 +1,7 @@
-@extends('new-dashboard.layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('breadcumb')
-    <li class="breadcrumb-item"><a href="{{ route('new-dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
     <li class="breadcrumb-item" aria-current="page"><a href="{{ route('mainmenu') }}">Main Menu</a></li>
     <li class="breadcrumb-item active" aria-current="page">Create</li>
 @endsection
@@ -16,7 +16,7 @@
                 <h4 class="box-title">Create A New Category</h4>
             </div>
 
-            <form class="form" action="{{ route('new-dashboard.categories.post-categories.store') }}" method="POST"
+            <form class="form" action="{{ route('dashboard.categories.post-categories.store') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
 
@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="box-footer">
-                                <a href="{{ route('new-dashboard.categories.post-categories.index') }}"
+                                <a href="{{ route('dashboard.categories.post-categories.index') }}"
                                     class="btn btn-dark me-1">
                                     <i class="ti-back-right"></i> Back
                                 </a>
