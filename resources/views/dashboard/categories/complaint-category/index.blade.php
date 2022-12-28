@@ -2,7 +2,7 @@
 
 @section('breadcumb')
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
-    <li class="breadcrumb-item active" aria-current="page">Posts List</li>
+    <li class="breadcrumb-item active" aria-current="page">Complaints List</li>
 @endsection
 
 @section('content')
@@ -13,13 +13,13 @@
                     <div class="col-12">
                         <div class="d-flex flex-row justify-content-between">
                             <h4 class="box-title align-items-start flex-column">
-                                Post categories
-                                <small class="subtitle">List of posts</small>
+                                Complaint categories
+                                <small class="subtitle">List of complaints</small>
                             </h4>
 
                             {{-- @if (auth()->user()->can('company-create')) --}}
                             <div class="text-end">
-                                <a href="{{ route('dashboard.categories.post-categories.create') }}"
+                                <a href="{{ route('dashboard.categories.complaint-categories.create') }}"
                                     class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add New</a>
                             </div>
                             {{-- @endif --}}
@@ -64,15 +64,16 @@
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="{{ route('dashboard.categories.post-categories.edit', $category->slug) }}"
+                                            <a href="{{ route('dashboard.categories.complaint-categories.edit', $category->slug) }}"
                                                 class="waves-effect waves-light btn btn-sm btn-warning-light btn-circle mx-5"><span
                                                     class="icon-Write"><span class="path1"></span><span
                                                         class="path2"></span></span></a>
                                             {{-- <a href="#"
                                                 class="waves-effect waves-light btn btn-sm btn-danger-light btn-circle"
-                                                onclick="modalDelete('Categories', 'Nama Category : {{ $category->slug }}', '{{ route('dashboard.categories.post-categories.destroy', $category->slug) }}', '{{ route('dashboard.categories.post-categories.index') }}')"><span
+                                                onclick="modalDelete('Categories', 'Nama Category : {{ $category->slug }}', '{{ route('dashboard.categories.complaint-categories.destroy', $category->slug) }}', '{{ route('dashboard.categories.complaint-categories.index') }}')"><span
                                                     class="icon-Trash1 fs-18"><span class="path1"></span><span
                                                         class="path2"></span></span></a> --}}
+
                                         </td>
                                     </tr>
                                 @endforeach

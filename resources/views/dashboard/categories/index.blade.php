@@ -16,8 +16,7 @@
 
 @section('content')
     <div class="row mx-lg-100 mt-20">
-        <div class="col-lg-4 col-md-6"
-            onclick="location.href='{{ route('dashboard.categories.post-categories.index') }}'">
+        <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('dashboard.categories.post-categories.index') }}'">
             <div class="box card">
                 <div class="box-body p-10">
                     <div class="d-flex align-items-center">
@@ -25,13 +24,14 @@
                             <img src="{{ asset('images/svg/post-category.svg') }}" style="height: 26px" alt="">
                         </div>
                         <div class="d-flex flex-column fw-500">
-                            <span class="text-dark fs-14">Posts Categories</span>
+                            <span class="text-dark fs-14">Post Categories</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('dashboard') }}'">
+        <div class="col-lg-4 col-md-6"
+            onclick="location.href='{{ route('dashboard.categories.complaint-categories.index') }}'">
             <div class="box card">
                 <div class="box-body p-10">
                     <div class="d-flex align-items-center">
@@ -39,7 +39,7 @@
                             <img src="{{ asset('images/svg/report-category.svg') }}" style="height: 26px" alt="">
                         </div>
                         <div class="d-flex flex-column fw-500">
-                            <span class="text-dark fs-14">Report Categories Ongoing!</span>
+                            <span class="text-dark fs-14">Kategori Pengaduan</span>
                         </div>
                     </div>
                 </div>

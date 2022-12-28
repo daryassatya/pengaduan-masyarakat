@@ -13,11 +13,10 @@
     <div class="col-lg-6 col-12">
         <div class="box">
             <div class="box-header with-border">
-                <h4 class="box-title">Create A New Category</h4>
+                <h4 class="box-title">Create A New Post Category</h4>
             </div>
 
-            <form class="form" action="{{ route('dashboard.categories.post-categories.store') }}" method="POST"
-                enctype="multipart/form-data">
+            <form class="form" action="{{ route('dashboard.categories.post-categories.store') }}" method="POST">
                 @csrf
 
                 <div class="box-body">

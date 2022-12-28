@@ -13,10 +13,10 @@
     <div class="col-lg-6 col-12">
         <div class="box">
             <div class="box-header with-border">
-                <h4 class="box-title">Edit Post Category</h4>
+                <h4 class="box-title">Edit Complaint Category</h4>
             </div>
 
-            <form class="form" action="{{ route('dashboard.categories.post-categories.update', $category->slug) }}"
+            <form class="form" action="{{ route('dashboard.categories.complaint-categories.update', $category->slug) }}"
                 method="POST" enctype="multipart/form-data">
                 @csrf @method('patch')
 
@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="box-footer">
-                                <a href="{{ route('dashboard.categories.post-categories.index') }}"
+                                <a href="{{ route('dashboard.categories.complaint-categories.index') }}"
                                     class="btn btn-dark me-1">
                                     <i class="ti-back-right"></i> Back
                                 </a>

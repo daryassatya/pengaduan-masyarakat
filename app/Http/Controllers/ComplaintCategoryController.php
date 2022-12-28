@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\ComplaintCategory;
 use Illuminate\Http\Request;
-use Illuminate\support\Facades\Session;
+use Illuminate\Support\Facades\Session;
 
-class DashboardPostCategoryController extends Controller
+class ComplaintCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,11 @@ class DashboardPostCategoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.categories.post-category.index', [
-            'title' => 'Post Categories',
-            'categories' => Category::all(),
+        return view('dashboard.categories.complaint-category.index', [
+            'title' => 'Complaint Categories',
+            'categories' => ComplaintCategory::all(),
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -28,9 +27,10 @@ class DashboardPostCategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.categories.post-category.create', [
-            'title' => 'Create Post Category',
+        return view('dashboard.categories.complaint-category.create', [
+            'title' => 'Create Complaint Category',
         ]);
+
     }
 
     /**
@@ -47,21 +47,20 @@ class DashboardPostCategoryController extends Controller
         ]);
 
         try {
-            Category::create($validation);
-            return redirect()->route('dashboard.categories.post-categories.index')->with(['success' => 'New post has been added!']);
+            ComplaintCategory::create($validation);
+            return redirect()->route('dashboard.categories.complaint-categories.index')->with(['success' => 'New Complaint has been added!']);
         } catch (\Throwable$th) {
             return redirect()->back()->with(['failed' => $th->getMessage()]);
         }
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ComplaintCategory  $complaintCategory
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ComplaintCategory $complaintCategory)
     {
         //
     }
@@ -69,25 +68,26 @@ class DashboardPostCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\ComplaintCategory  $complaintCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $post_category)
+    public function edit(ComplaintCategory $complaintCategory)
     {
-        return view('dashboard.categories.post-category.edit', [
-            'title' => 'Edit Post Category',
-            'category' => $post_category,
+        return view('dashboard.categories.complaint-category.edit', [
+            'title' => 'Edit Complaint Category',
+            'category' => $complaintCategory,
         ]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\ComplaintCategory  $complaintCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $post_category)
+    public function update(Request $request, ComplaintCategory $complaintCategory)
     {
         $validation = $request->validate([
             'name' => 'required|max:255',
@@ -95,8 +95,8 @@ class DashboardPostCategoryController extends Controller
         ]);
 
         try {
-            Category::findOrFail($post_category->id)->update($validation);
-            return redirect()->route('dashboard.categories.post-categories.index')->with(['success' => 'New post has been edited!']);
+            ComplaintCategory::findOrFail($complaintCategory->id)->update($validation);
+            return redirect()->route('dashboard.categories.complaint-categories.index')->with(['success' => 'New complaint has been edited!']);
         } catch (\Throwable$th) {
             return redirect()->back()->with(['failed' => $th->getMessage()]);
         }
@@ -106,18 +106,18 @@ class DashboardPostCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\ComplaintCategory  $complaintCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $post_category)
+    public function destroy(ComplaintCategory $complaintCategory)
     {
         try {
-            $post_category->delete();
+            $complaintCategory->delete();
 
-            Session::flash('success', 'Post Category Successfully Deleted!');
+            Session::flash('success', 'Complaint Category Successfully Deleted!');
             return response()->json([
                 'success' => true,
-                'message' => 'Post Category successfully deleted',
+                'message' => 'Complaint Category successfully deleted',
             ], 200);
         } catch (\Throwable$th) {
             Session::flash('failed', $th->getMessage());
@@ -127,6 +127,5 @@ class DashboardPostCategoryController extends Controller
                 'message' => $th->getMessage(),
             ], 200);
         }
-
     }
 }

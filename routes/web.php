@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ComplaintCategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostCategoryController;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\NewDashboardController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\User;
@@ -122,6 +122,16 @@ Route::middleware(['auth'])->group(function () {
                 'update' => 'post-categories.update',
                 'destroy' => 'post-categories.destroy',
             ]);
+
+            Route::resource('complaint-categories', ComplaintCategoryController::class)->names([
+                'index' => 'complaint-categories.index',
+                'create' => 'complaint-categories.create',
+                'store' => 'complaint-categories.store',
+                'edit' => 'complaint-categories.edit',
+                'update' => 'complaint-categories.update',
+                'destroy' => 'complaint-categories.destroy',
+            ]);
+
         });
     });
 });
