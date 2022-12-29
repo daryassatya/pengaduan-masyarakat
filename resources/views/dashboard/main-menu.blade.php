@@ -44,6 +44,22 @@
                 </div>
             </div>
         </div>
+        @can('admin')
+            <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('manage-complaint.index') }}'">
+                <div class="box card">
+                    <div class="box-body p-10">
+                        <div class="d-flex align-items-center">
+                            <div class="me-15 bg-warning h-50 w-50 l-h-50 rounded text-center">
+                                <img src="{{ asset('images/svg/report.svg') }}" style="height: 26px" alt="">
+                            </div>
+                            <div class="d-flex flex-column fw-500">
+                                <span class="text-dark fs-14">Manage Complaint</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endcan
     </div>
 @endsection
 

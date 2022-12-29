@@ -25,7 +25,6 @@ class DashboardPostController extends Controller
             'title' => 'Post',
             'posts' => Post::where('user_id', auth()->user()->id)->get(),
         ]);
-
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ComplaintCategoryController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostCategoryController;
 use App\Http\Controllers\DashboardPostController;
@@ -108,7 +109,7 @@ Route::middleware(['auth'])->group(function () {
     // Middleware Pengecekan ADMIN
     Route::middleware(['is-admin'])->group(function () {
 
-        Route::prefix('dashboard.categories')->name('dashboard.categories.')->group(function () {
+        Route::prefix('dashboard/categories')->name('dashboard.categories.')->group(function () {
             Route::get('/', function () {
                 $data['title'] = 'Categories';
                 return view('dashboard.categories.index', $data);
@@ -131,8 +132,18 @@ Route::middleware(['auth'])->group(function () {
                 'update' => 'complaint-categories.update',
                 'destroy' => 'complaint-categories.destroy',
             ]);
-
         });
+
+        Route::resource('manage-complaint', ComplaintController::class)->names([
+            'index' => 'manage-complaint.index',
+            'create' => 'manage-complaint.create',
+            'store' => 'manage-complaint.store',
+            'edit' => 'manage-complaint.edit',
+            'update' => 'manage-complaint.update',
+            'destroy' => 'manage-complaint.destroy',
+            'manage' => 'manage-complaint.manage',
+        ]);
+
     });
 });
 

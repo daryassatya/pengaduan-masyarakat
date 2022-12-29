@@ -15,4 +15,9 @@ class ComplaintCategory extends Model
     {
         return 'slug';
     }
+    public function complaints()
+    {
+        return $this->hasMany(Complaint::class);
+    }
+
 }
