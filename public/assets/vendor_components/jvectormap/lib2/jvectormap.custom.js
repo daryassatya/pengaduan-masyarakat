@@ -10,14 +10,13 @@ jQuery('#world-map-markers').vectorMap(
     color: '#f4f3f0',
     regionStyle : {
         initial : {
-        fill: '#643534'
+          fill : '#1e88e5'
         }
       },
     markerStyle: {
       initial: {
                     r: 9,
                     'fill': '#fff',
-
                     'fill-opacity':1,
                     'stroke': '#000',
                     'stroke-width' : 5,
@@ -26,14 +25,11 @@ jQuery('#world-map-markers').vectorMap(
                 },
     enableZoom: true,
     hoverColor: '#0a89c1',
-    // markers : [{
-    //     latLng : [37.00, 96.00],
-    //     name : 'Text'
-    //   },{
-    //     latLng: [1.3, 103.8],
-    //     name: 'Singapura'
-    //     }],
-    markers : country,
+    markers : [{
+        latLng : [37.00, 96.00],
+        name : 'Text'
+      
+      }],
     hoverOpacity: null,
     normalizeFunction: 'linear',
     scaleColors: ['#b6d6ff', '#005ace'],
@@ -51,5 +47,49 @@ jQuery('#world-map-markers').vectorMap(
     }
 });
 
- 
+
+$('#india').vectorMap({
+            map : 'in_mill',
+            backgroundColor : 'transparent',
+            regionStyle : {
+                initial : {
+                    fill : '#26c6da'
+                }
+            }
+        });
+
+
+$('#usa').vectorMap({
+	map : 'us_aea_en',
+	backgroundColor : 'transparent',
+	regionStyle : {
+		initial : {
+			fill : '#fc4b6c'
+		}
+	}
+});
+
+
+
+$('#australia').vectorMap({
+	map : 'au_mill',
+	backgroundColor : 'transparent',
+	regionStyle : {
+		initial : {
+			fill : '#ffb22b'
+		}
+	}
+});
+
+ $('#uk').vectorMap({
+	map : 'uk_mill_en',
+	backgroundColor : 'transparent',
+	regionStyle : {
+		initial : {
+			fill : '#0bb2d4'
+		}
+	}
+});
+
+       
         

@@ -23,6 +23,8 @@ class CreateComplaintsTable extends Migration
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->text('body');
+            $table->integer('status')->default(1);
+
             $table->timestamps();
         });
     }

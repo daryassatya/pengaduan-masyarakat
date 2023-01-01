@@ -43,7 +43,7 @@ class ComplaintCategoryController extends Controller
     {
         $validation = $request->validate([
             'name' => 'required|max:255',
-            'slug' => 'required|unique:categories',
+            'slug' => 'required|unique:complaint_categories',
         ]);
 
         try {
