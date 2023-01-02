@@ -89,25 +89,25 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('mainmenu');
-
-    //Api
-    Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug'])->name('check-slug');
-
-    Route::resource('/dashboard/posts', DashboardPostController::class)->names([
-        'index' => 'dashboard.posts.index',
-        'create' => 'dashboard.posts.create',
-        'store' => 'dashboard.posts.store',
-        'show' => 'dashboard.posts.show',
-        'edit' => 'dashboard.posts.edit',
-        'update' => 'dashboard.posts.update',
-        'destroy' => 'dashboard.posts.destroy',
-    ]);
-
     // Middleware Pengecekan ADMIN
     Route::middleware(['is-admin'])->group(function () {
+
+        // Dashboard
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('mainmenu');
+
+        //Api
+        Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug'])->name('check-slug');
+
+        Route::resource('/dashboard/posts', DashboardPostController::class)->names([
+            'index' => 'dashboard.posts.index',
+            'create' => 'dashboard.posts.create',
+            'store' => 'dashboard.posts.store',
+            'show' => 'dashboard.posts.show',
+            'edit' => 'dashboard.posts.edit',
+            'update' => 'dashboard.posts.update',
+            'destroy' => 'dashboard.posts.destroy',
+        ]);
 
         Route::prefix('dashboard/categories')->name('dashboard.categories.')->group(function () {
             Route::get('/', function () {

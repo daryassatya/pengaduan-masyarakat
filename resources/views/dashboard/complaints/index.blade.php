@@ -16,10 +16,10 @@
                                 complaint List
                                 <small class="subtitle">A list of complaints</small>
                             </h4>
-                            {{-- <div class="text-end">
+                            <div class="text-end">
                                 <a href="{{ route('manage-complaint.create') }}" class="btn btn-primary btn-rounded"><i
                                         class="fa fa-plus"></i> Add New</a>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
 

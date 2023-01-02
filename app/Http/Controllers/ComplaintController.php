@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complaint;
+use App\Models\ComplaintCategory;
 use Illuminate\Http\Request;
 
 class ComplaintController extends Controller
@@ -27,7 +28,10 @@ class ComplaintController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.complaints.create', [
+            'title' => 'Create Complaint',
+            'complaintCategories' => ComplaintCategory::all(),
+        ]);
     }
 
     /**
