@@ -105,9 +105,7 @@
 
     <script>
         $(function() {
-            $('#companyTable').DataTable({
-                "scrollX": true
-            });
+            $('#companyTable').DataTable({});
         });
     </script>
 @endpush
