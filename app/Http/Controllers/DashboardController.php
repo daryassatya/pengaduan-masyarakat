@@ -20,13 +20,17 @@ class DashboardController extends Controller
             ->get();
 
         $countsComplaintMonth = [];
-        $month = 0;
+        $tempMonth = 0;
         foreach ($complaintMonths as $key => $cm) {
-            if ($cm->month - $month !== -1 && $key !== 0) {
-                $countsComplaintMonth[] = 0;
+            $tempMonthReduced = $cm->month - $tempMonth;
+            if ($tempMonthReduced !== 1 || $key !== 0) {
+                for ($i=1; $i < $tempMonthReduced; $i++) { 
+                    $countsComplaintMonth[] = 0;
+                }
             }
             $countsComplaintMonth[] = $cm->count;
-            $month = $cm->month;
+            $tempMonth = $cm->month;
+
         }
         /* Complaint Chart Process End*/
 

@@ -20,14 +20,23 @@ class DatabaseSeeder extends Seeder
     {
 
         User::create([
-            'name' => 'Dimas Aryasatya',
-            'username' => 'daryas',
+            'name' => 'admin',
+            'username' => 'admin',
             'email_verified_at' => now(),
-            'email' => 'dimasaryasatya@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => Hash::make('password'),
-            'rw' => 025,
             'remember_token' => Str::random(10),
-        ]);
+            'is_admin' => 1,
+        ], [
+            'name' => 'masyarakat',
+            'username' => 'masyarakat',
+            'email_verified_at' => now(),
+            'email' => 'masyarakat@gmail.com',
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+            'is_admin' => 0,
+        ]
+        );
 
         // User::create([
         //     'name' => 'Daryas',
@@ -35,24 +44,24 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('12345'),
         // ]);
 
-        User::factory(3)->create();
+        // User::factory(3)->create();
 
-        Category::create([
-            'name' => 'Web Programming',
-            'slug' => 'web-programming',
-        ]);
+        // Category::create([
+        //     'name' => 'Web Programming',
+        //     'slug' => 'web-programming',
+        // ]);
 
-        Category::create([
-            'name' => 'Web Design',
-            'slug' => 'web-design',
-        ]);
+        // Category::create([
+        //     'name' => 'Web Design',
+        //     'slug' => 'web-design',
+        // ]);
 
-        Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal',
-        ]);
+        // Category::create([
+        //     'name' => 'Personal',
+        //     'slug' => 'personal',
+        // ]);
 
-        Post::factory(20)->create();
+        // Post::factory(20)->create();
 
         // Post::create([
         //     'title' => "Judul pertama",
