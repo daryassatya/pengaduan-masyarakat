@@ -21,7 +21,6 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->string('excerpt');
             $table->string('image')->nullable();
             $table->text('excerpt');
             $table->text('body');

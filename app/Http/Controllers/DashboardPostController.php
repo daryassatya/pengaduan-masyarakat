@@ -158,12 +158,13 @@ class DashboardPostController extends Controller
                 Storage::delete($post->image);
             }
 
-            Post::destroy($post->id);
+            $post->delete();
+            // Post::destroy($post->id);
 
             Session::flash('success', 'Post Successfully Deleted!');
             return response()->json([
                 'success' => true,
-                'message' => 'Posts successfully deleted',
+                'message' => 'Post successfully deleted',
             ], 200);
         } catch (\Throwable$th) {
             Session::flash('failed', $th->getMessage());

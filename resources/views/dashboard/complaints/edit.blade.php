@@ -2,7 +2,7 @@
 
 @section('breadcumb')
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="mdi mdi-view-grid"></i></a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('mainmenu') }}">Main Menu</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('mainmenu') }}">Company List</a></li>
     <li class="breadcrumb-item active" aria-current="page">Create</li>
 @endsection
 
@@ -13,12 +13,12 @@
     <div class="col-lg-12 col-12">
         <div class="box">
             <div class="box-header with-border">
-                <h4 class="box-title">Create A New Complaint</h4>
+                <h4 class="box-title">Edit A Complaint</h4>
             </div>
 
-            <form class="form" action="{{ route('manage-complaint.store') }}" method="POST"
+            <form class="form" action="{{ route('manage-complaint.update', $complaint->slug) }}" method="POST"
                 enctype="multipart/form-data">
-                @csrf
+                @csrf @method('patch')
 
                 <div class="box-body">
                     <div class="row">
@@ -29,7 +29,7 @@
                                 <label class="form-label">Title <span class="text-danger">*</span></label>
 
                                 <input type="text" class="form-control" placeholder="Name" name="title" id="title"
-                                    value="{{ old('title') }}">
+                                    value="{{ old('title', $complaint->title) }}">
 
                                 @error('title')
                                     <span class="text-danger">{{ $message }}</span>
@@ -40,7 +40,7 @@
                                 <label class="form-label">Slug <span class="text-danger">*</span></label>
 
                                 <input type="text" class="form-control" placeholder="Slug" name="slug" id="slug"
-                                    value="{{ old('slug') }}">
+                                    value="{{ old('slug', $complaint->slug) }}">
 
                                 @error('slug')
                                     <span class="text-danger">{{ $message }}</span>
@@ -54,7 +54,7 @@
                                     <option value="">Select Category</option>
                                     @foreach ($complaintCategories as $category)
                                         <option value="{{ $category->id }}"
-                                            {{ old('complaint_category_id') == $category->id ? 'selected' : '' }}>
+                                            {{ old('complaint_category_id', $complaint->complaint_category_id) == $category->id ? 'selected' : '' }}>
                                             {{ $category->name }}</option>
                                     @endforeach
                                 </select>
@@ -67,7 +67,8 @@
                             <div class="form-group @error('image') error @enderror">
                                 <label for="image" class="form-label">Complaint Thumbnail</label>
 
-                                <img class="img-preview img-fluid mb-3 col-sm-5">
+                                <img class="img-preview img-fluid mb-3 col-sm-5"
+                                    @if ($complaint->image) src="{{ asset('storage/' . $complaint->image) }}" @endif>
                                 <input class="form-control @error('image') is-invalid @enderror" type="file"
                                     id="image" name="image">
 
@@ -78,6 +79,8 @@
 
                             <div class="form-group @error('dokumen') error @enderror">
                                 <label for="dokumen" class="form-label">Dokumen Pengaduan</label>
+                                <a href="{{ route('manage-complaint.download', $complaint->slug) }}"><span>Download
+                                        Dokumen</span></a>
                                 <input class="form-control @error('dokumen') is-invalid @enderror" type="file"
                                     id="dokumen" name="dokumen">
 
@@ -91,7 +94,7 @@
                     <div class="form-group @error('body') error @enderror">
                         <label class="form-label">Text Body <span class="text-danger">*</span></label>
 
-                        <textarea name="body" id="body">{{ old('body') ?? 'Welcome to TinyMCE!' }}</textarea>
+                        <textarea name="body" id="body">{{ old('body', $complaint->body) }}</textarea>
 
                         @error('body')
                             <span class="text-danger">{{ $message }}</span>

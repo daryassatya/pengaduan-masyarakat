@@ -16,10 +16,12 @@
                                 complaint List
                                 <small class="subtitle">A list of complaints</small>
                             </h4>
+                            {{-- @if (!auth()->user()->can('admin')) --}}
                             <div class="text-end">
                                 <a href="{{ route('manage-complaint.create') }}" class="btn btn-primary btn-rounded"><i
                                         class="fa fa-plus"></i> Add New</a>
                             </div>
+                            {{-- @endif --}}
                         </div>
                     </div>
 
@@ -36,6 +38,7 @@
                                     <th style="max-width: 19px"><span class="text-dark">No</span></th>
                                     <th style="min-width: 100px"><span class="text-dark">Title</span></th>
                                     <th style="min-width: 100px"><span class="text-dark">Category</span></th>
+                                    <th style="min-width: 100px"><span class="text-dark">Status</span></th>
                                     <th style="min-width: 100px" class="text-center"><span class="text-dark">Action</span>
                                     </th>
                                 </tr>
@@ -60,19 +63,30 @@
                                                 {{ $complaint->complaintCategory->name }}
                                             </span>
                                         </td>
+
+                                        <td class="text-start">
+                                            @if ($complaint->status === 2)
+                                                <span class="badge badge-success-light badge-lg">Approved</span>
+                                            @elseif($complaint->status === 3)
+                                                <span class="badge badge-danger-light badge-lg">Rejected</span>
+                                            @else
+                                                <span class="badge badge-warning-light badge-lg">In Progress</span>
+                                            @endif
+                                        </td>
+
                                         <td class="text-center">
                                             <a href="{{ route('manage-complaint.show', $complaint->slug) }}"
                                                 class="waves-effect waves-light btn btn-sm btn-info-light btn-circle"><i
                                                     class="mdi mdi-eye"></i></a>
 
-                                            {{-- <a href="{{ route('manage-complaint.edit', $complaint->slug) }}"
+                                            <a href="{{ route('manage-complaint.edit', $complaint->slug) }}"
                                                 class="waves-effect waves-light btn btn-sm btn-warning-light btn-circle mx-5"><span
                                                     class="icon-Write"><span class="path1"></span><span
-                                                        class="path2"></span></span></a> --}}
+                                                        class="path2"></span></span></a>
 
                                             <a href="#"
                                                 class="waves-effect waves-light btn btn-sm btn-danger-light btn-circle"
-                                                onclick="modalDelete('complaints', 'Nama complaint : {{ $complaint->title }}', '{{ route('manage-complaint.destroy', $complaint->slug) }}', '{{ route('manage-complaint.index') }}')"><span
+                                                onclick="modalDelete('complaint', 'Nama complaint : {{ $complaint->title }}', '{{ route('manage-complaint.destroy', $complaint->slug) }}', '{{ route('manage-complaint.index') }}')"><span
                                                     class="icon-Trash1 fs-18"><span class="path1"></span><span
                                                         class="path2"></span></span></a>
                                     </tr>

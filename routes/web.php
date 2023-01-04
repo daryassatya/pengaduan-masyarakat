@@ -143,6 +143,7 @@ Route::middleware(['auth'])->group(function () {
             'destroy' => 'manage-complaint.destroy',
             'manage' => 'manage-complaint.manage',
         ]);
+        Route::get('/manage-complaint/download/{manage_complaint:slug}', [ComplaintController::class, 'downloadDocument'])->name('manage-complaint.download');
 
     });
 });
