@@ -186,11 +186,31 @@ class ComplaintController extends Controller
 
     public function downloadDocument(Complaint $manage_complaint)
     {
-        $url = asset('storage/' . $manage_complaint->dokumen);
-        dd($url);
-        return Response::make(file_get_contents($url), 200, [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="my-pdf-file.pdf"',
-        ]);
+        // $path = storage_path(public/' . $manage_complaint->dokumen);
+        // // dd($path);
+        // return Response::make(file_get_contents($path), 200, [
+        //     'Content-Type' => 'application/pdf',
+        //     'Content-Disposition' => 'inline; filename="my-pdf-file.pdf"',
+        // ]);
+        // return response()->file($path);
+        // {{ link_to_asset('files/file.pdf', 'Open the pdf!') }}
+//         $path = storage_path('app/public/' . $manage_complaint->dokumen);
+//         $fileContents = Storage::get($path);
+
+//         return response()->download('/path/to/pdf.pdf')->withHeaders([
+//     'Content-Disposition' => 'attachment; filename="your-custom-filename.pdf"',
+// ]);
+        $path = storage_path('app/public/' . $manage_complaint->dokumen);
+
+        return response()->download($path);
+
+    }
+
+    public function viewDocument(Complaint $manage_complaint)
+    {
+        $path = storage_path('app/public/' . $manage_complaint->dokumen);
+
+        return response()->file($path);
+
     }
 }

@@ -79,8 +79,12 @@
 
                             <div class="form-group @error('dokumen') error @enderror">
                                 <label for="dokumen" class="form-label">Dokumen Pengaduan</label>
-                                <a href="{{ route('manage-complaint.download', $complaint->slug) }}"><span>Download
-                                        Dokumen</span></a>
+                                <div class="row">
+                                    <a href="{{ route('manage-complaint.view-pdf', $complaint->slug) }}" target="_blank"><span>Lihat
+                                            Dokumen</span></a>
+                                    <a href="{{ route('manage-complaint.download-pdf', $complaint->slug) }}"><span>Download
+                                            Dokumen</span></a>
+                                </div>
                                 <input class="form-control @error('dokumen') is-invalid @enderror" type="file"
                                     id="dokumen" name="dokumen">
 

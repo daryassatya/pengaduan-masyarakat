@@ -143,7 +143,8 @@ Route::middleware(['auth'])->group(function () {
             'destroy' => 'manage-complaint.destroy',
             'manage' => 'manage-complaint.manage',
         ]);
-        Route::get('/manage-complaint/download/{manage_complaint:slug}', [ComplaintController::class, 'downloadDocument'])->name('manage-complaint.download');
+        Route::get('/manage-complaint/download/pdf/{manage_complaint:slug}', [ComplaintController::class, 'downloadDocument'])->name('manage-complaint.download-pdf');
+        Route::get('/manage-complaint/view/pdf/{manage_complaint:slug}', [ComplaintController::class, 'viewDocument'])->name('manage-complaint.view-pdf');
 
     });
 });
