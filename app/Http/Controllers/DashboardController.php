@@ -30,7 +30,6 @@ class DashboardController extends Controller
             }
             $countsComplaintMonth[] = $cm->count;
             $tempMonth = $cm->month;
-
         }
         /* Complaint Chart Process End*/
 

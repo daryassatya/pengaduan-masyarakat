@@ -138,7 +138,7 @@
                             </p>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                            <img src="assets/img/features-1.jpg" alt="" class="img-fluid">
+                            <img src="#" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -163,7 +163,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-6 order-1 order-lg-2 text-center">
-                            <img src="assets/img/features-2.jpg" alt="" class="img-fluid">
+                            <img src="#" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div><!-- End tab content item -->
@@ -183,7 +183,7 @@
                     architecto accusamus fugit aut qui distinctio</p>
             </div>
 
-            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
+            {{-- <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry"
                 data-portfolio-sort="original-order">
 
                 <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
@@ -378,13 +378,13 @@
 
                 </div><!-- End Projects Container -->
 
-            </div>
+            </div> --}}
 
         </div>
     </section><!-- End Our Projects Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
+    {{-- <section id="testimonials" class="testimonials section-bg">
         <div class="container" data-aos="fade-up">
 
             <div class="section-header">
@@ -516,11 +516,11 @@
             </div>
 
         </div>
-    </section><!-- End Testimonials Section -->
+    </section><!-- End Testimonials Section --> --}}
 
     <!-- ======= Recent Blog Posts Section ======= -->
     <section id="recent-blog-posts" class="recent-blog-posts">
-        <div class="container" data-aos="fade-up"">
+        <div class="container" data-aos="fade-up">
 
 
 
@@ -535,7 +535,7 @@
                     <div class="post-item position-relative h-100">
 
                         <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt="">
+                            <img src="#" class="img-fluid" alt="">
                             <span class="post-date">December 12</span>
                         </div>
 
@@ -567,7 +567,7 @@
                     <div class="post-item position-relative h-100">
 
                         <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt="">
+                            <img src="#" class="img-fluid" alt="">
                             <span class="post-date">July 17</span>
                         </div>
 
@@ -597,7 +597,7 @@
                     <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="300">
 
                         <div class="post-img position-relative overflow-hidden">
-                            <img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt="">
+                            <img src="#" class="img-fluid" alt="">
                             <span class="post-date">September 05</span>
                         </div>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardPostCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserProfileController;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -141,12 +142,21 @@ Route::middleware(['auth'])->group(function () {
             'edit' => 'manage-complaint.edit',
             'update' => 'manage-complaint.update',
             'destroy' => 'manage-complaint.destroy',
-            'manage' => 'manage-complaint.manage',
         ]);
         Route::get('/manage-complaint/download/pdf/{manage_complaint:slug}', [ComplaintController::class, 'downloadDocument'])->name('manage-complaint.download-pdf');
         Route::get('/manage-complaint/view/pdf/{manage_complaint:slug}', [ComplaintController::class, 'viewDocument'])->name('manage-complaint.view-pdf');
 
     });
+
+    Route::resource('profile', UserProfileController::class)->names([
+        'index' => 'profile.index',
+        'create' => 'profile.create',
+        'store' => 'profile.store',
+        'edit' => 'profile.edit',
+        'update' => 'profile.update',
+        'destroy' => 'profile.destroy',
+    ]);
+
 });
 
 // Tempat Menyimpan Codingan Route Lama
