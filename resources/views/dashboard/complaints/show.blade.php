@@ -60,8 +60,9 @@
                                     <a href="{{ route('manage-complaint.download-pdf', $complaint->slug) }}" type="button"
                                         class="color-hover waves-effect waves-light btn mb-5 bg-gradient-warning">Download
                                         Dokumen</a>
+                                @else
+                                    <span class="badge-xl badge-warning text-center">Tidak ada Dokumen!</span>
                                 @endif
-                                <span class="badge-xl badge-warning text-center">Tidak ada Dokumen!</span>
                             </div>
                         </div>
                     </div>

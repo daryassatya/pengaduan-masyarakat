@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserProfileController;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +32,8 @@ use Illuminate\Support\Facades\Route;
 //Home
 Route::get('/', function () {
     return view('front-pages.index', [
-        'title' => "Home",
+        'title' => "SIPMAS - Home",
+        'posts' => Post::latest()->paginate(3),
     ]);
 })->name('/');
 
@@ -91,11 +93,11 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     // Middleware Pengecekan ADMIN
+    Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('mainmenu');
     Route::middleware(['is-admin'])->group(function () {
 
         // Dashboard
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/main-menu', [DashboardController::class, 'mainMenu'])->name('mainmenu');
 
         //Api
         Route::get('/dashboard/posts/create-slug', [DashboardPostController::class, 'checkSlug'])->name('check-slug');
@@ -134,20 +136,18 @@ Route::middleware(['auth'])->group(function () {
                 'destroy' => 'complaint-categories.destroy',
             ]);
         });
-
-        Route::resource('manage-complaint', ComplaintController::class)->names([
-            'index' => 'manage-complaint.index',
-            'show' => 'manage-complaint.show',
-            'create' => 'manage-complaint.create',
-            'store' => 'manage-complaint.store',
-            'edit' => 'manage-complaint.edit',
-            'update' => 'manage-complaint.update',
-            'destroy' => 'manage-complaint.destroy',
-        ]);
-        Route::get('/manage-complaint/download/pdf/{manage_complaint:slug}', [ComplaintController::class, 'downloadDocument'])->name('manage-complaint.download-pdf');
-        Route::get('/manage-complaint/view/pdf/{manage_complaint:slug}', [ComplaintController::class, 'viewDocument'])->name('manage-complaint.view-pdf');
-
     });
+    Route::resource('manage-complaint', ComplaintController::class)->names([
+        'index' => 'manage-complaint.index',
+        'show' => 'manage-complaint.show',
+        'create' => 'manage-complaint.create',
+        'store' => 'manage-complaint.store',
+        'edit' => 'manage-complaint.edit',
+        'update' => 'manage-complaint.update',
+        'destroy' => 'manage-complaint.destroy',
+    ]);
+    Route::get('/manage-complaint/download/pdf/{manage_complaint:slug}', [ComplaintController::class, 'downloadDocument'])->name('manage-complaint.download-pdf');
+    Route::get('/manage-complaint/view/pdf/{manage_complaint:slug}', [ComplaintController::class, 'viewDocument'])->name('manage-complaint.view-pdf');
 
     Route::resource('profile', UserProfileController::class)->names([
         'index' => 'profile.index',

@@ -75,17 +75,19 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <div class="btn-group mb-5 mx-3">
-                                                <button type="button"
-                                                    class="waves-effect waves-light btn bg-gradient-info dropdown-toggle btn-rounded btn-sm"
-                                                    data-bs-toggle="dropdown">Status</button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item bg-success" href="#">Aprrove</a>
-                                                    <a class="dropdown-item bg-danger" href="#">Reject</a>
-                                                    <a class="dropdown-item bg-warning" href="#">In
-                                                        progress</a>
+                                            @can('admin')
+                                                <div class="btn-group mb-5 mx-3">
+                                                    <button type="button"
+                                                        class="waves-effect waves-light btn bg-gradient-info dropdown-toggle btn-rounded btn-sm"
+                                                        data-bs-toggle="dropdown">Status</button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item bg-success" href="#">Aprrove</a>
+                                                        <a class="dropdown-item bg-danger" href="#">Reject</a>
+                                                        <a class="dropdown-item bg-warning" href="#">In
+                                                            progress</a>
 
-                                                </div>
+                                                    </div>
+                                                @endcan
                                             </div>
                                             <a href="{{ route('manage-complaint.show', $complaint->slug) }}"
                                                 class="waves-effect waves-light btn btn-sm btn-info-light btn-circle"><i

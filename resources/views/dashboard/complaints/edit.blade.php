@@ -79,11 +79,20 @@
 
                             <div class="form-group @error('dokumen') error @enderror">
                                 <label for="dokumen" class="form-label">Dokumen Pengaduan</label>
-                                <div class="row">
-                                    <a href="{{ route('manage-complaint.view-pdf', $complaint->slug) }}" target="_blank"><span>Lihat
-                                            Dokumen</span></a>
-                                    <a href="{{ route('manage-complaint.download-pdf', $complaint->slug) }}"><span>Download
-                                            Dokumen</span></a>
+                                <div class="row mb-5">
+                                    @if ($complaint->dokumen)
+                                        <a href="{{ route('manage-complaint.view-pdf', $complaint->slug) }}"
+                                            target="_blank" type="button"
+                                            class="waves-effect waves-light btn mb-5 bg-gradient-success">Lihat
+                                            Dokumen</a>
+
+                                        <a href="{{ route('manage-complaint.download-pdf', $complaint->slug) }}"
+                                            type="button"
+                                            class="color-hover waves-effect waves-light btn mb-5 bg-gradient-warning">Download
+                                            Dokumen</a>
+                                    @else
+                                        <span class="badge-xl badge-warning text-center">Tidak ada Dokumen!</span>
+                                    @endif
                                 </div>
                                 <input class="form-control @error('dokumen') is-invalid @enderror" type="file"
                                     id="dokumen" name="dokumen">

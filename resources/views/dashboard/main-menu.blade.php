@@ -45,6 +45,7 @@
                     </div>
                 </div>
             </div>
+            @endcan
             <div class="col-lg-4 col-md-6" onclick="location.href='{{ route('manage-complaint.index') }}'">
                 <div class="box card">
                     <div class="box-body p-10">
@@ -59,7 +60,6 @@
                     </div>
                 </div>
             </div>
-        @endcan
     </div>
 @endsection
 
