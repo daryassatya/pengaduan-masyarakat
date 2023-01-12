@@ -16,12 +16,12 @@
                                 complaint List
                                 <small class="subtitle">A list of complaints</small>
                             </h4>
-                            {{-- @if (!auth()->user()->can('admin')) --}}
-                            <div class="text-end">
-                                <a href="{{ route('manage-complaint.create') }}" class="btn btn-primary btn-rounded"><i
-                                        class="fa fa-plus"></i> Add New</a>
-                            </div>
-                            {{-- @endif --}}
+                            @cannot('admin')
+                                <div class="text-end">
+                                    <a href="{{ route('manage-complaint.create') }}" class="btn btn-primary btn-rounded"><i
+                                            class="fa fa-plus"></i> Add New</a>
+                                </div>
+                            @endcannot
                         </div>
                     </div>
 
@@ -32,7 +32,7 @@
 
                 <div class="box-body">
                     <div class="table-responsive">
-                        <table id="companyTable" class="table no-border">
+                        <table id="complaintTable" class="table no-border">
                             <thead>
                                 <tr class="text-uppercase bg-lightest">
                                     <th style="max-width: 19px"><span class="text-dark">No</span></th>
@@ -75,20 +75,34 @@
                                         </td>
 
                                         <td class="text-center">
+                                            <div class="btn-group mb-5 mx-3">
+                                                <button type="button"
+                                                    class="waves-effect waves-light btn bg-gradient-info dropdown-toggle btn-rounded btn-sm"
+                                                    data-bs-toggle="dropdown">Status</button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item bg-success" href="#">Aprrove</a>
+                                                    <a class="dropdown-item bg-danger" href="#">Reject</a>
+                                                    <a class="dropdown-item bg-warning" href="#">In
+                                                        progress</a>
+
+                                                </div>
+                                            </div>
                                             <a href="{{ route('manage-complaint.show', $complaint->slug) }}"
                                                 class="waves-effect waves-light btn btn-sm btn-info-light btn-circle"><i
                                                     class="mdi mdi-eye"></i></a>
+                                            @cannot('admin')
+                                                <a href="{{ route('manage-complaint.edit', $complaint->slug) }}"
+                                                    class="waves-effect waves-light btn btn-sm btn-warning-light btn-circle mx-5"><span
+                                                        class="icon-Write"><span class="path1"></span><span
+                                                            class="path2"></span></span></a>
 
-                                            <a href="{{ route('manage-complaint.edit', $complaint->slug) }}"
-                                                class="waves-effect waves-light btn btn-sm btn-warning-light btn-circle mx-5"><span
-                                                    class="icon-Write"><span class="path1"></span><span
-                                                        class="path2"></span></span></a>
-
-                                            <a href="#"
-                                                class="waves-effect waves-light btn btn-sm btn-danger-light btn-circle"
-                                                onclick="modalDelete('complaint', 'Nama complaint : {{ $complaint->title }}', '{{ route('manage-complaint.destroy', $complaint->slug) }}', '{{ route('manage-complaint.index') }}')"><span
-                                                    class="icon-Trash1 fs-18"><span class="path1"></span><span
-                                                        class="path2"></span></span></a>
+                                                <a href="#"
+                                                    class="waves-effect waves-light btn btn-sm btn-danger-light btn-circle"
+                                                    onclick="modalDelete('complaint', 'Nama complaint : {{ $complaint->title }}', '{{ route('manage-complaint.destroy', $complaint->slug) }}', '{{ route('manage-complaint.index') }}')"><span
+                                                        class="icon-Trash1 fs-18"><span class="path1"></span><span
+                                                            class="path2"></span></span></a>
+                                            @endcannot
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -105,7 +119,9 @@
 
     <script>
         $(function() {
-            $('#companyTable').DataTable();
+            $('#complaintTable').DataTable({
+                // scrollX: true,
+            });
         });
     </script>
 @endpush

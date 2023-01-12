@@ -11,8 +11,8 @@
         <a href="javascript:void(0)" class="logo justify-content-around">
             <!-- logo-->
             <div class="logo-lg">
-                <span class="light-logo"><img src="{{ asset('images/logo2.png') }}" alt="logo"></span>
-                <span class="dark-logo"><img src="{{ asset('images/logo2.png') }}" alt="logo"></span>
+                <span class="light-logo"><img src="{{ asset('images/sip-logo2.png') }}" alt="logo"></span>
+                <span class="dark-logo"><img src="{{ asset('images/sip-logo2.png') }}" alt="logo"></span>
             </div>
         </a>
     </div>

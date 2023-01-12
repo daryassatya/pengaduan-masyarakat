@@ -6,7 +6,7 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-{{-- <link href="{{ asset('front-components/img/favicon.png') }}" rel="icon"> --}}
+<link href="{{ asset('front-components/img/sip-logo-32.png') }}" rel="icon">
 {{-- <link href="{{ asset('front-components/img/apple-touch-icon.png') }}" rel="apple-touch-icon"> --}}
 
 <!-- Google Fonts -->

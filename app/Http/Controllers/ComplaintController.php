@@ -83,7 +83,10 @@ class ComplaintController extends Controller
      */
     public function show(Complaint $manage_complaint)
     {
-        //
+        return view('dashboard.complaints.show', [
+            'title' => 'Show Complaint',
+            'complaint' => $manage_complaint,
+        ]);
     }
 
     /**

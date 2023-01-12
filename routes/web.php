@@ -137,6 +137,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('manage-complaint', ComplaintController::class)->names([
             'index' => 'manage-complaint.index',
+            'show' => 'manage-complaint.show',
             'create' => 'manage-complaint.create',
             'store' => 'manage-complaint.store',
             'edit' => 'manage-complaint.edit',
